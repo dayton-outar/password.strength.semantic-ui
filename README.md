@@ -1,6 +1,6 @@
-# WARNING! Documentation need to be updated to reflect most current changes
+# WARNING! Documentation Not Updated
 
-TODO: Update this README.md file
+TODO: Update this README.md file to reflect latest changes to this plugin
 
 ### jQuery Password Strength
 
