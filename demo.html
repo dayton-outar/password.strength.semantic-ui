@@ -1,58 +1,171 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-	  
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<title>Password Strength : Example</title>
-<style type="text/css">
-body {
-	padding: 50px;
-	}
-h1 a {
-	color: #000;
-	}
-input {
-	border: 1px solid #999;
-	margin: 0 5px;
-	}
-.password_strength {
-	padding: 0 5px;
-	display: inline-block;
-	}
-.password_strength_1 {
-	background-color: #fcb6b1;
-	}
-.password_strength_2 {
-	background-color: #fccab1;
-	}
-.password_strength_3 {
-	background-color: #fcfbb1;
-	}
-.password_strength_4 {
-	background-color: #dafcb1;
-	}
-.password_strength_5 {
-	background-color: #bcfcb1;
-	}
-</style>
+	<title>Password Strength : Example</title>
+
+	<link href="semantic.min.css" rel="stylesheet" />
+
+	<style type="text/css">
+		body {
+			padding: 50px;
+		}
+
+		h1 a {
+			color: #000;
+		}
+
+		input {
+			border: 1px solid #999;
+			margin: 0 5px;
+		}
+
+		ul.check-list {
+			margin: 0;
+			padding: 0;
+		}
+
+		/* Style the list items */
+		ul.check-list li {
+			cursor: pointer;
+			position: relative;
+			padding: 0.3em 2.2em;
+			/*padding: 12px 8px 12px 40px;*/
+			list-style: none;
+			transition: 0.2s;
+			/* make the list items unselectable */
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+
+		ul.check-list li::before {
+			content: '\2022';
+			position: absolute;
+			border-color: #fff;
+			border-style: solid;
+			border-width: 0 3px 3px 0;
+			left: 16px;
+			height: 15px;
+			width: 7px;
+		}
+
+		ul.check-list li.checked {
+			font-weight: bold;
+			text-decoration: line-through;
+		}
+
+		ul.check-list li.checked:before {
+			content: '';
+			position: absolute;
+			border-color: #4CAF50;
+			border-style: solid;
+			border-width: 0 3px 3px 0;
+			left: 16px;
+			transform: rotate(45deg);
+			height: 15px;
+			width: 7px;
+		}
+
+		.password_strength {
+			padding: 0px 10px 2px 10px;
+			margin-left: 5px;
+			display: inline-block;
+			font-weight: bold;
+			color: #000000;
+		}
+
+		.password_strength_1 {
+			padding: 0px 10px 2px 10px;
+			margin-left: 5px;
+			background-color: #fcb6b1;
+			font-weight: bold;
+			color: #000000;
+		}
+
+		.password_strength_2 {
+			padding: 0px 10px 2px 10px;
+			margin-left: 5px;
+			background-color: #fccab1;
+			font-weight: bold;
+			color: #000000;
+		}
+
+		.password_strength_3 {
+			padding: 0px 10px 2px 10px;
+			margin-left: 5px;
+			background-color: #fcfbb1;
+			font-weight: bold;
+			color: #000000;
+		}
+
+		.password_strength_4 {
+			padding: 0px 10px 2px 10px;
+			margin-left: 5px;
+			background-color: #dafcb1;
+			font-weight: bold;
+			color: #000000;
+		}
+
+		.password_strength_5 {
+			padding: 0px 10px 2px 10px;
+			margin-left: 5px;
+			background-color: #bcfcb1;
+			font-weight: bold;
+			color: #000000;
+		}
+	</style>
 </head>
+
 <body>
 
-<h1><a href="http://plugins.jquery.com/project/password_strength">Password Strength</a>: Demo</h1>
+	<h1><a href="http://plugins.jquery.com/project/password_strength">Password Strength</a>: Demo</h1>
 
-<form method="post" action="">
-<p>
-<label for="password">Enter Password:</label>
-<input type="password" name="password" id="password" value="" />
-</p>
-</form>
+	<form method="post" action="" class="ui form segment">
+		<div class="ui message">
+			<div class="header">Password Tip</div>
+			<p>Password must contain at least:</p>
+			<ul class="check-list">
+				<li id="li-characters-length">7 character(s)</li>
+				<li id="li-lowers-length">1 lower case character(s)</li>
+				<li id="li-uppers-length">1 upper case character(s)</li>
+				<li id="li-numbers-length">1 number(s)</li>
+				<li id="li-symbols-length">1 symbol(s), e.g. $, #, @</li>
+			</ul>
+		</div>
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
-<script type="text/javascript" src="jquery.password_strength.js"></script>
-<script type="text/javascript">
-$('form').attr('autocomplete', 'off');
-$('#password').password_strength();
-</script>
+		<div class="field">
+			<label for="password">Enter Password:</label>
+			<input type="password" name="password" id="password" value="" />
+		</div>
+	</form>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+	<script type="text/javascript" src="jquery.password_strength.js"></script>
+	<script type="text/javascript">
+		$('form').attr('autocomplete', 'off');
+
+		var passwordLevel = 0;
+		$('#password').password_strength({
+			minCharacters: 8,
+			minLowerCaseCharacters: 1,
+			minUpperCaseCharacters: 1,
+			minNumbers: 1,
+			minSymbols: 1,
+			onCheck: function (l, c, s) {
+				passwordLevel = l;
+				for (var prop in c) {
+					if (c[prop] >= s[prop]) {
+						$('#li-' + prop + '-length').addClass('checked');
+					} else {
+						$('#li-' + prop + '-length').removeClass('checked');
+					}
+				}
+			}
+		});
+	</script>
 </body>
+
 </html>
