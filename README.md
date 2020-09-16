@@ -1,3 +1,7 @@
+# WARNING! Documentation need to be updated to reflect most current changes
+
+TODO: Update this README.md file
+
 ### jQuery Password Strength
 
 This plugin will check the value of a password field and evaluate the strength of the typed password. This is done by checking for the diversity of character types: numbers, lowercase and uppercase letters and special characters.
