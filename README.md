@@ -34,4 +34,6 @@ The options argument is optional. Available values to set:
 
 * __onCheck__: A callback that gets called after a strength check. Gets the new strength value as a parameter.
 
-jQuery plugin page: http://plugins.jquery.com/project/password_strengths
+## Contributions
+
+...
