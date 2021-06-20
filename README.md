@@ -82,4 +82,4 @@ The `onCheck` event handler is used in the demo to apply a styling to a bullet-l
 
 ## Contributions
 
-...
+Developers are welcomed to fork a copy of this repo, make changes and submit pull requests as they desire.
